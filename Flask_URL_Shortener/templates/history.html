@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+{% block title %}
+History
+{% endblock %}
+
+{% block content %}
+<h1>URL History</h1>
+<center>
+{% if urlshorts|length==0 %}
+{{ 'No URL found' }}
+{% else %}
+<style>
+table,th,td {
+    border:1px solid black;
+}
+</style>
+<table class="table" style="width:50%">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Original URL</th>
+            <th scope="col">Shortened URL</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in urlshorts %}
+        <tr>
+            <th scope="row">{{loop.index}}</th>
+            <td>{{ i.url }}</td>
+            <td>http://127.0.0.1:5000/{{ i.urls }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+</center>
+{% endblock %} 

@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<h1>URL Shortener</h1>
+<center>
+<form action="/" method="post">
+    <input type="url" name="url_in" placeholder="Enter the URL" size="50"><br><br>
+    <input type="submit" value="Shorten URL">
+</form>
+<br>
+{% if short_url_display %}
+<h2>Shortened URL</h2>
+<input type="text" value="http://127.0.0.1:5000/{{ short_url_display }}" id="short_url_display" size="50"><br><br>
+
+<button onclick="copyToClipboard()">Copy URL</button>
+
+<script>
+function copyToClipboard() {
+  var text = document.getElementById("short_url_display").value;
+  navigator.clipboard.writeText(text).then(function() {
+    alert("Copied the url");
+  }, function() {
+    console.log("Error copying text to clipboard");
+  });
+}
+</script>
+</script>
+{% endif %}
+</center>
+{% endblock %} 
